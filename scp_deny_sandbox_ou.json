@@ -1,0 +1,29 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "iam:CreateUser",
+        "iam:CreateGroup"
+      ],
+      "Resource": "*",
+      "Effect": "Deny",
+      "Condition": {
+        "ArnNotLike": {
+          "aws:PrincipalARN": [
+            "arn:aws:iam::*:role/aws-reserved/sso.amazonaws.com/ap-southeast-1/AWSReservedSSO_lz-exception-sharing-resources_*"
+          ]
+        }
+      }
+    },
+    {
+      "Action": [
+        "globalaccelerator:Create*",
+        "globalaccelerator:Update*"
+      ],
+      "Resource": "*",
+      "Effect": "Deny",
+      "Sid": "DenyGlobalAccelerator"
+    }
+  ]
+}
